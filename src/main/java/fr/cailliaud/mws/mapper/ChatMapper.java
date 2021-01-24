@@ -3,9 +3,10 @@ package fr.cailliaud.mws.mapper;
 import fr.cailliaud.mws.dto.Chat;
 import fr.cailliaud.mws.entity.ChatEntity;
 import org.mapstruct.Mapper;
+import org.springframework.core.convert.converter.Converter;
 
-@Mapper(componentModel = "spring")
-public interface ChatMapper {
+@Mapper(config = MapperSpringConfig.class)
+public interface ChatMapper extends Converter<ChatEntity, Chat> {
 
-  Chat mapEntityToDto(ChatEntity chatEntity);
+  Chat convert(ChatEntity chatEntity);
 }

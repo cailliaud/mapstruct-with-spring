@@ -1,0 +1,16 @@
+CREATE SEQUENCE RESPONSABLE_SEQUENCE START WITH 0 INCREMENT BY 1;
+CREATE TABLE RESPONSABLE
+(
+    ID                BIGINT IDENTITY,
+    CREATION_TIME     TIMESTAMP NOT NULL,
+    MODIFICATION_TIME TIMESTAMP,
+    VERSION           INT       NOT NULL,
+    PRENOM            VARCHAR   NOT NULL,
+    NOM               VARCHAR   NOT NULL,
+    EMAIL             VARCHAR   NOT NULL
+);
+CREATE UNIQUE INDEX RESPONSABLE_INDEX ON RESPONSABLE (ID);
+
+INSERT INTO RESPONSABLE (ID, CREATION_TIME, MODIFICATION_TIME, VERSION, PRENOM, NOM, EMAIL)
+VALUES (nextVal('RESPONSABLE_SEQUENCE'), current_timestamp(), null, 0, 'Alexandre', 'Cailliaud', 'test@exammple.com'),
+       (nextVal('RESPONSABLE_SEQUENCE'), current_timestamp(), null, 0, 'Henry', 'Dupont', 'henry.dupont@example.com');
