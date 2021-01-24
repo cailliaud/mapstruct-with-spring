@@ -1,0 +1,17 @@
+CREATE SEQUENCE CHAT_SEQUENCE START WITH 0 INCREMENT BY 1;
+CREATE TABLE CHAT(
+    ID BIGINT IDENTITY,
+    CREATION_TIME TIMESTAMP NOT NULL ,
+    MODIFICATION_TIME TIMESTAMP ,
+    VERSION INT NOT NULL,
+    PRENOM VARCHAR NOT NULL,
+    AGE SMALLINT NOT NULL,
+    RACE VARCHAR NOT NULL
+);
+CREATE UNIQUE INDEX CHAT_INDEX ON CHAT(ID);
+
+INSERT INTO CHAT (ID, CREATION_TIME, MODIFICATION_TIME, VERSION, PRENOM, AGE, RACE) VALUES
+(nextVal('CHAT_SEQUENCE'),current_timestamp(),null,0,'Ahsoka',3,'Européen'),
+(nextVal('CHAT_SEQUENCE'),current_timestamp(),null,0,'Lulu',10,'Européen'),
+(nextVal('CHAT_SEQUENCE'),current_timestamp(),null,0,'Moustique',7,'Européen'),
+(nextVal('CHAT_SEQUENCE'),current_timestamp(),null,0,'Agrippine',7,'Européen');
