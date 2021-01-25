@@ -1,11 +1,10 @@
 package fr.cailliaud.mws.entity;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "hotel")
@@ -26,8 +25,16 @@ public class HotelEntity extends BaseEntity {
   @ToString.Exclude
   private ResponsableEntity responsable;
 
+  @OneToMany(cascade = CascadeType.ALL)
+  @JoinColumn(name = "hotel_id")
+  @Setter(AccessLevel.NONE)
+  private Set<ChatEntity> chats = new HashSet<>();
+
+  /** AJouter un nouveau chat comme pensionnaire de l'hôtel */
+  public void addChat(ChatEntity chatEntity) {}
+
   /**
-   * Ajoute le responsable de l'hôtel
+   * Méthode pour définir le responsable de l'hôtel
    *
    * @param responsable Responsable de l'hôtel
    */

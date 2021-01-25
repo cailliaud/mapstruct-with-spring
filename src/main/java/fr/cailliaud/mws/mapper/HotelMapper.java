@@ -10,6 +10,6 @@ import org.springframework.core.convert.converter.Converter;
 public interface HotelMapper extends Converter<HotelEntity, Hotel> {
 
   @Mapping(target = "estComplet", constant = "false")
-  @Mapping(target = "pensionnaires", ignore = true)
+  @Mapping(target = "pensionnaires", source = "chats")
   Hotel convert(HotelEntity hotelEntity);
 }
